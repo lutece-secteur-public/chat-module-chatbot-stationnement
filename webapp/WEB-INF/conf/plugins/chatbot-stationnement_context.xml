@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd" >
+
+    <bean id="chatbot-stationnement.chatbotStationnement" class="fr.paris.lutece.plugins.chatbot.modules.stationnement.service.bot.StationnementChatBot">
+        <property name="key" value="stationnement"/>
+        <property name="name" value="Stationnement"/>
+        <property name="description" value="Chatbot sur le stationnement"/>
+        <property name="listAvailableLanguages">
+            <list>
+                <value>en</value>
+                <value>fr</value>
+            </list>
+        </property>
+        
+    </bean>
+
+</beans>
