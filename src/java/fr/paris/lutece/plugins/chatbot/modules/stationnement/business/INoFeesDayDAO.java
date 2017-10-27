@@ -32,7 +32,7 @@
  * License 1.0
  */
  
-package fr.paris.lutece.plugins.stationnement.business;
+package fr.paris.lutece.plugins.chatbot.modules.stationnement.business;
 
 import fr.paris.lutece.portal.service.plugin.Plugin;
 import fr.paris.lutece.util.ReferenceList;

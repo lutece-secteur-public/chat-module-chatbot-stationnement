@@ -32,10 +32,10 @@
  * License 1.0
  */
  	
-package fr.paris.lutece.plugins.stationnement.web;
+package fr.paris.lutece.plugins.chatbot.modules.stationnement.web;
 
-import fr.paris.lutece.plugins.stationnement.business.NoFeesDay;
-import fr.paris.lutece.plugins.stationnement.business.NoFeesDayHome;
+import fr.paris.lutece.plugins.chatbot.modules.stationnement.business.NoFeesDay;
+import fr.paris.lutece.plugins.chatbot.modules.stationnement.business.NoFeesDayHome;
 import fr.paris.lutece.portal.service.message.AdminMessage;
 import fr.paris.lutece.portal.service.message.AdminMessageService;
 import fr.paris.lutece.portal.util.mvc.admin.annotations.Controller;
@@ -50,33 +50,33 @@ import javax.servlet.http.HttpServletRequest;
 /**
  * This class provides the user interface to manage NoFeesDay features ( manage, create, modify, remove )
  */
-@Controller( controllerJsp = "ManageNoFeesDays.jsp", controllerPath = "jsp/admin/plugins/stationnement/", right = "STATIONNEMENT_NOFEESDAYS_MANAGEMENT" )
+@Controller( controllerJsp = "ManageNoFeesDays.jsp", controllerPath = "jsp/admin/plugins/chatbot/modules/stationnement/", right = "STATIONNEMENT_NOFEESDAYS_MANAGEMENT" )
 public class NoFeesDayJspBean extends AbstractManageNoFeesDaysJspBean
 {
     // Templates
-    private static final String TEMPLATE_MANAGE_NOFEESDAYS = "/admin/plugins/stationnement/manage_nofeesdays.html";
-    private static final String TEMPLATE_CREATE_NOFEESDAY = "/admin/plugins/stationnement/create_nofeesday.html";
-    private static final String TEMPLATE_MODIFY_NOFEESDAY = "/admin/plugins/stationnement/modify_nofeesday.html";
+    private static final String TEMPLATE_MANAGE_NOFEESDAYS = "/admin/plugins/chatbot/modules/stationnement/manage_nofeesdays.html";
+    private static final String TEMPLATE_CREATE_NOFEESDAY = "/admin/plugins/chatbot/modules/stationnement/create_nofeesday.html";
+    private static final String TEMPLATE_MODIFY_NOFEESDAY = "/admin/plugins/chatbot/modules/stationnement/modify_nofeesday.html";
 
     // Parameters
     private static final String PARAMETER_ID_NOFEESDAY = "id";
 
     // Properties for page titles
-    private static final String PROPERTY_PAGE_TITLE_MANAGE_NOFEESDAYS = "stationnement.manage_nofeesdays.pageTitle";
-    private static final String PROPERTY_PAGE_TITLE_MODIFY_NOFEESDAY = "stationnement.modify_nofeesday.pageTitle";
-    private static final String PROPERTY_PAGE_TITLE_CREATE_NOFEESDAY = "stationnement.create_nofeesday.pageTitle";
+    private static final String PROPERTY_PAGE_TITLE_MANAGE_NOFEESDAYS = "module.chatbot.stationnement.manage_nofeesdays.pageTitle";
+    private static final String PROPERTY_PAGE_TITLE_MODIFY_NOFEESDAY = "module.chatbot.stationnement.modify_nofeesday.pageTitle";
+    private static final String PROPERTY_PAGE_TITLE_CREATE_NOFEESDAY = "module.chatbot.stationnement.create_nofeesday.pageTitle";
 
     // Markers
     private static final String MARK_NOFEESDAY_LIST = "nofeesday_list";
     private static final String MARK_NOFEESDAY = "nofeesday";
 
-    private static final String JSP_MANAGE_NOFEESDAYS = "jsp/admin/plugins/stationnement/ManageNoFeesDays.jsp";
+    private static final String JSP_MANAGE_NOFEESDAYS = "jsp/admin/plugins/chatbot/modules/stationnement/ManageNoFeesDays.jsp";
 
     // Properties
-    private static final String MESSAGE_CONFIRM_REMOVE_NOFEESDAY = "stationnement.message.confirmRemoveNoFeesDay";
+    private static final String MESSAGE_CONFIRM_REMOVE_NOFEESDAY = "module.chatbot.stationnement.message.confirmRemoveNoFeesDay";
 
     // Validations
-    private static final String VALIDATION_ATTRIBUTES_PREFIX = "stationnement.model.entity.nofeesday.attribute.";
+    private static final String VALIDATION_ATTRIBUTES_PREFIX = "module.chatbot.stationnement.model.entity.nofeesday.attribute.";
 
     // Views
     private static final String VIEW_MANAGE_NOFEESDAYS = "manageNoFeesDays";
@@ -90,9 +90,9 @@ public class NoFeesDayJspBean extends AbstractManageNoFeesDaysJspBean
     private static final String ACTION_CONFIRM_REMOVE_NOFEESDAY = "confirmRemoveNoFeesDay";
 
     // Infos
-    private static final String INFO_NOFEESDAY_CREATED = "stationnement.info.nofeesday.created";
-    private static final String INFO_NOFEESDAY_UPDATED = "stationnement.info.nofeesday.updated";
-    private static final String INFO_NOFEESDAY_REMOVED = "stationnement.info.nofeesday.removed";
+    private static final String INFO_NOFEESDAY_CREATED = "module.chatbot.stationnement.info.nofeesday.created";
+    private static final String INFO_NOFEESDAY_UPDATED = "module.chatbot.stationnement.info.nofeesday.updated";
+    private static final String INFO_NOFEESDAY_REMOVED = "module.chatbot.stationnement.info.nofeesday.removed";
     
     // Session variable to store working values
     private NoFeesDay _nofeesday;

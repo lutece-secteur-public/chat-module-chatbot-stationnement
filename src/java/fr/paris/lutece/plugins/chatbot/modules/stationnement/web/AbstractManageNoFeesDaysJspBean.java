@@ -32,7 +32,7 @@
  * License 1.0
  */
  
-package fr.paris.lutece.plugins.stationnement.web;
+package fr.paris.lutece.plugins.chatbot.modules.stationnement.web;
 
 import fr.paris.lutece.portal.service.util.AppPropertiesService;
 import fr.paris.lutece.portal.util.mvc.admin.MVCAdminJspBean;
@@ -53,7 +53,7 @@ public abstract class AbstractManageNoFeesDaysJspBean extends MVCAdminJspBean
     public static final String RIGHT_MANAGENOFEESDAYS = "STATIONNEMENT_NOFEESDAYS_MANAGEMENT";
     
     // Properties
-    private static final String PROPERTY_DEFAULT_LIST_ITEM_PER_PAGE = "stationnement.listItems.itemsPerPage";
+    private static final String PROPERTY_DEFAULT_LIST_ITEM_PER_PAGE = "chatbot-stationnement.listItems.itemsPerPage";
     
     // Parameters
     private static final String PARAMETER_PAGE_INDEX = "page_index";

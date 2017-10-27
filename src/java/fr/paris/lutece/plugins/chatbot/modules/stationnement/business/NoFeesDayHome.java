@@ -31,7 +31,7 @@
  *
  * License 1.0
  */
- package fr.paris.lutece.plugins.stationnement.business;
+ package fr.paris.lutece.plugins.chatbot.modules.stationnement.business;
 
 import fr.paris.lutece.portal.service.plugin.Plugin;
 import fr.paris.lutece.portal.service.plugin.PluginService;
@@ -46,8 +46,8 @@ import java.util.List;
 public final class NoFeesDayHome
 {
     // Static variable pointed at the DAO instance
-    private static INoFeesDayDAO _dao = SpringContextService.getBean( "stationnement.noFeesDayDAO" );
-    private static Plugin _plugin = PluginService.getPlugin( "stationnement" );
+    private static INoFeesDayDAO _dao = SpringContextService.getBean( "chatbot-stationnement.noFeesDayDAO" );
+    private static Plugin _plugin = PluginService.getPlugin( "chatbot-stationnement" );
 
     /**
      * Private constructor - this class need not be instantiated

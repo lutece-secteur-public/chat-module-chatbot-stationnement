@@ -31,7 +31,7 @@
  *
  * License 1.0
  */ 
-package fr.paris.lutece.plugins.stationnement.business;
+package fr.paris.lutece.plugins.chatbot.modules.stationnement.business;
 
 import javax.validation.constraints.*;
 import org.hibernate.validator.constraints.*;
@@ -50,7 +50,7 @@ public class NoFeesDay implements Serializable
     
     private Date _dateDate;
     
-    @Size( max = 255 , message = "#i18n{stationnement.validation.nofeesday.Comment.size}" ) 
+    @Size( max = 255 , message = "#i18n{module.chatbot.stationnement.validation.nofeesday.Comment.size}" ) 
     private String _strComment;
 
     /**

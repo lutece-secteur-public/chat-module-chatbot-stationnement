@@ -23,10 +23,10 @@
     <admin-features>
         <admin-feature>
             <feature-id>STATIONNEMENT_NOFEESDAYS_MANAGEMENT</feature-id>
-            <feature-title>stationnement.adminFeature.ManageNoFeesDays.name</feature-title>
-            <feature-description>stationnement.adminFeature.ManageNoFeesDays.description</feature-description>
+            <feature-title>module.chatbot.stationnement.adminFeature.ManageNoFeesDays.name</feature-title>
+            <feature-description>module.chatbot.stationnement.adminFeature.ManageNoFeesDays.description</feature-description>
             <feature-level>0</feature-level>
-            <feature-url>jsp/admin/plugins/stationnement/ManageNoFeesDays.jsp</feature-url>
+            <feature-url>jsp/admin/plugins/chatbot/modules/stationnement/ManageNoFeesDays.jsp</feature-url>
             <feature-icon-url></feature-icon-url>
       </admin-feature>
     </admin-features>    

@@ -1,0 +1,44 @@
+<#include "managenofeesdays_tabs.html" />
+<@tabs2 tab="nofeesday" />
+
+<@box>
+	<@boxHeader title='#i18n{module.chatbot.stationnement.manage_nofeesday.title}' boxTools=true>
+		<@tform class='form-inline pull-right' name='manage_nofeesday' action='jsp/admin/plugins/chatbot/modules/stationnement/ManageNoFeesDays.jsp'>
+			<@button type='submit' name='view_createNoFeesDay' buttonIcon='plus' title='#i18n{module.chatbot.stationnement.manage_nofeesdays.buttonAdd}' />
+		</@tform>
+	</@boxHeader>
+	<@boxBody>    
+    <@messages infos=infos />
+    <@paginationAdmin paginator=paginator combo=1 />
+    <div class="clearfix"></div>
+    <@table>
+        <tr>
+            <input type="hidden" id="id" name="id"/>
+            <th>#i18n{module.chatbot.stationnement.manage_nofeesdays.columnDate}</th>
+            <th>#i18n{module.chatbot.stationnement.manage_nofeesdays.columnComment}</th>
+            <th>#i18n{portal.util.labelActions}</th>
+        </tr>
+        <@tableHeadBodySeparator />
+            <#list nofeesday_list as nofeesday >
+        <tr>
+            <input type="hidden" id="id" name="id"/>
+            <td>
+                ${nofeesday.date}
+            </td>
+            <td>
+                ${nofeesday.comment}
+            </td>
+        <td>
+			<@aButton href='jsp/admin/plugins/chatbot/modules/stationnement/ManageNoFeesDays.jsp?view=modifyNoFeesDay&id=${nofeesday.id}' title='#i18n{portal.util.labelModify}' buttonIcon='pencil' showTitle=false />
+						
+			<@aButton href='jsp/admin/plugins/chatbot/modules/stationnement/ManageNoFeesDays.jsp?action=confirmRemoveNoFeesDay&id=${nofeesday.id}' title='#i18n{portal.util.labelDelete}' buttonIcon='trash' color='btn-danger' showTitle=false />
+
+        </td>
+        </tr>
+        </#list>
+    </@table>
+
+    <@paginationAdmin paginator=paginator />
+
+  </@boxBody>
+</@box>

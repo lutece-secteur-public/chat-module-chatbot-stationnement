@@ -18,6 +18,6 @@
         
     </bean>
 
-    <bean id="stationnement.noFeesDayDAO" class="fr.paris.lutece.plugins.stationnement.business.NoFeesDayDAO" />
+    <bean id="chatbot-stationnement.noFeesDayDAO" class="fr.paris.lutece.plugins.chatbot.modules.stationnement.business.NoFeesDayDAO" />
 
 </beans>
