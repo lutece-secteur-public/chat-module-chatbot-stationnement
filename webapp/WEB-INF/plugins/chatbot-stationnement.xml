@@ -38,4 +38,12 @@
     <!-- Portlet parameters -->
     <portlets>
    </portlets>
+
+    <servlets>
+        <servlet>
+            <servlet-name>NoFeesDaysActionServlet</servlet-name>
+            <url-pattern>/servlet/plugins/chatbot/modules/stationnement/nofeesdaysaction</url-pattern>
+            <servlet-class>fr.paris.lutece.plugins.chatbot.modules.stationnement.web.NoFeesDayActionServlet</servlet-class>
+        </servlet>
+    </servlets>
 </plug-in>
