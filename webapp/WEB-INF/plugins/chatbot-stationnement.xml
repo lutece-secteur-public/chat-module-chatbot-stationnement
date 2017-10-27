@@ -45,5 +45,10 @@
             <url-pattern>/servlet/plugins/chatbot/modules/stationnement/nofeesdaysaction</url-pattern>
             <servlet-class>fr.paris.lutece.plugins.chatbot.modules.stationnement.web.NoFeesDayActionServlet</servlet-class>
         </servlet>
+        <servlet>
+            <servlet-name>StationnementChatServlet</servlet-name>
+            <url-pattern>/servlet/plugins/chatbot/modules/stationnement/chat</url-pattern>
+            <servlet-class>fr.paris.lutece.plugins.chatbot.modules.stationnement.web.StationnementChatServlet</servlet-class>
+        </servlet>
     </servlets>
 </plug-in>
