@@ -1,0 +1,21 @@
+<#include "managenofeesdays_tabs.html" />
+<@tabs2 tab="nofeesday" />
+<@box>
+	<@boxHeader title='#i18n{stationnement.create_nofeesday.title}' />
+	<@boxBody>
+    <@tform name='create_nofeesday' action='jsp/admin/plugins/stationnement/ManageNoFeesDays.jsp'>
+
+        <@messages errors=errors />
+        <input type="hidden" id="id" name="id"/>
+        
+				<@formGroup labelKey='#i18n{stationnement.create_nofeesday.labelDate}' helpKey='#i18n{stationnement.create_nofeesday.labelDate.help}' mandatory=true>
+					<@input type='text' name='date' value='${nofeesday.date!\'\'}' />
+				</@formGroup>
+				<@formGroup labelKey='#i18n{stationnement.create_nofeesday.labelComment}' helpKey='#i18n{stationnement.create_nofeesday.labelComment.help}' >
+					<@input type='text' name='comment' value='${nofeesday.comment!\'\'}' />
+				</@formGroup>
+				
+				<@actionButtons button1Name="action_createNoFeesDay" button2Name="view_manageNoFeesDay"/>
+    </@tform>
+	</@boxBody>
+</@box>

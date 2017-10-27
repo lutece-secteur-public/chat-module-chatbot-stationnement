@@ -1,0 +1,10 @@
+<#macro tabs2 tab >
+<@tabs>
+	<@listTabs>
+			<li <#if tab="nofeesday">class="active"</#if>>
+				<a href="jsp/admin/plugins/stationnement/ManageNoFeesDays.jsp">#i18n{stationnement.manage_nofeesdays.pageTitle}</a>
+			</li>
+	</@listTabs>
+</@tabs>
+
+</#macro>
