@@ -6,13 +6,13 @@
 
     <bean id="chatbot-stationnement.chatbotStationnement" class="fr.paris.lutece.plugins.chatbot.modules.stationnement.service.bot.StationnementChatBot">
         <property name="key" value="stationnement"/>
-        <property name="name" value="Stationnement"/>
-        <property name="description" value="Chatbot sur le stationnement"/>
-        <property name="avatarUrl" value="images/skin/plugins/chatbot/modules/stationnement/bot.png" />
+        <property name="name" value="Bot Stationnement"/>
+        <property name="description" value="ChatBot sur le stationnement à Paris réalisé avec la plate-forme Recast.AI avec la participation de Metapolis"/>
+        <property name="avatarUrl" value="images/skin/plugins/chatbot/modules/stationnement/paris.jpg" />
         <property name="listAvailableLanguages">
             <list>
-                <value>en</value>
                 <value>fr</value>
+                <value>en</value>
             </list>
         </property>
         
