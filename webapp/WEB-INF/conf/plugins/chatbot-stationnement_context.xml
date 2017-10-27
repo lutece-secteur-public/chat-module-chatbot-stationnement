@@ -8,6 +8,7 @@
         <property name="key" value="stationnement"/>
         <property name="name" value="Stationnement"/>
         <property name="description" value="Chatbot sur le stationnement"/>
+        <property name="avatarUrl" value="images/skin/plugins/chatbot/modules/stationnement/bot.png" />
         <property name="listAvailableLanguages">
             <list>
                 <value>en</value>
