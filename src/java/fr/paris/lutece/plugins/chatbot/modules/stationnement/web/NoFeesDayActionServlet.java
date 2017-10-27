@@ -38,7 +38,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 
 import javax.servlet.ServletException;
@@ -69,37 +68,68 @@ public class NoFeesDayActionServlet extends HttpServlet
     private static final long serialVersionUID = -2387659805321292879L;
     
 //Example input
+//{
 //  "conversation": {
 //    "language": "fr",
-//    "skill_occurences": 1,
-//    "skill": "4561356e-7d53-4390-992f-0c59990e926f",
-//    "memory": {},
+//    "skill_occurences": 3,
+//    "skill": "63d3d0d8-7340-4cf3-9292-21596f4acfc9",
+//    "memory": {
+//      "location": {
+//        "confidence": 0.98,
+//        "raw": "227 rue de bercy paris",
+//        "place": "ChIJjWtmOwNy5kcRTfOJS7ErxCk",
+//        "type": "street_address",
+//        "lng": 2.369777,
+//        "lat": 48.8464993,
+//        "formatted": "227 Rue de Bercy, 75012 Paris-12E-Arrondissement, France"
+//      },
+//      "date": {
+//        "confidence": 0.99,
+//        "raw": "aujourd'hui",
+//        "state": "relative",
+//        "chronology": "present",
+//        "accuracy": "day",
+//        "iso": "2017-10-27T14:29:02+00:00",
+//        "formatted": "vendredi 27 octobre 2017 Ã  14h29m02s (+0000)"
+//      }
+//    },
 //    "skill_stack": [
-//      "4561356e-7d53-4390-992f-0c59990e926f"
+//      "63d3d0d8-7340-4cf3-9292-21596f4acfc9"
 //    ],
-//    "conversation_id": "recast-test-1509100728093"
+//    "conversation_id": "4d07d6a0-8faa-4d87-9e43-d238683ab667"
 //  },
 //  "nlp": {
 //    "status": 200,
-//    "timestamp": "2017-10-27T10:55:12.307224+00:00",
+//    "timestamp": "2017-10-27T14:29:12.939995+00:00",
 //    "version": "2.10.1",
 //    "processing_language": "fr",
-//    "uuid": "b3788189-8794-41f1-adbc-2c5a1b2e206c",
-//    "source": "bonjour",
+//    "uuid": "89158fd7-11d5-4541-bd04-4d292779cb2d",
+//    "source": "227 rue de bercy paris",
 //    "intents": [
 //      {
-//        "confidence": 0.99,
-//        "slug": "greetings"
+//        "confidence": 0.54,
+//        "slug": "freepark"
 //      }
 //    ],
 //    "act": "assert",
 //    "type": null,
-//    "sentiment": "vpositive",
-//    "entities": {},
+//    "sentiment": "neutral",
+//    "entities": {
+//      "location": [
+//        {
+//          "confidence": 0.98,
+//          "raw": "227 rue de bercy paris",
+//          "place": "ChIJjWtmOwNy5kcRTfOJS7ErxCk",
+//          "type": "street_address",
+//          "lng": 2.369777,
+//          "lat": 48.8464993,
+//          "formatted": "227 Rue de Bercy, 75012 Paris-12E-Arrondissement, France"
+//        }
+//      ]
+//    },
 //    "language": "fr"
 //  }
 //}
-//
     private static final ObjectMapper mapper = new ObjectMapper();
     
     @Override
@@ -110,7 +140,8 @@ public class NoFeesDayActionServlet extends HttpServlet
         AppLogService.info ("Got request:" + strBody);
         JsonNode actualObj = mapper.readTree(strBody);
         String strConversionId = actualObj.path("conversation").get("conversation_id").asText();
-
+        String strDate = actualObj.path("conversation").path("memory").path("date").get("iso").asText();
+        String strDateSql = strDate.substring(0, 10);
         HttpAccess httpAccess = new HttpAccess(  );
         Map<String, Object> responseJson = new HashMap<>();
         List<Object> messages = new ArrayList<>();
@@ -123,8 +154,18 @@ public class NoFeesDayActionServlet extends HttpServlet
         String strNoFeeDays = listNoFeesDays.stream()
             .map(it -> it.getDate().toString() )
             .collect(Collectors.joining(", "));
+        boolean isEqual = listNoFeesDays.stream().anyMatch(it -> {
+            return it.getDate().toString().equals(strDateSql);
+        });
+
         message.put("type", "text");
         message.put("content", "List des jours fériés : " + strNoFeeDays);
+
+        message = new HashMap<>();
+        messages.add(message);
+        message.put("type", "text");
+        message.put("content", isEqual ? "Donc oui, c'est gratuit !" : "Donc non, c'est payant...");
+
         String strResponseJson = mapper.writeValueAsString( responseJson );
 
         Map<String, String> headers = new HashMap<>();
@@ -145,6 +186,16 @@ public class NoFeesDayActionServlet extends HttpServlet
 
         }
 
-        response.getWriter().print("OK");
+        Map<String, Object> hookResponse = new HashMap<>();
+        Map<String, Object> newMemory = mapper.convertValue(actualObj.path("conversation").get("memory"),  Map.class);
+        newMemory.put("isfreeday", isEqual);
+        hookResponse.put("memory", newMemory);
+        hookResponse.put("memory", newMemory);
+        hookResponse.put("messages", messages);
+
+        String strFullResponse = mapper.writeValueAsString(hookResponse);
+        AppLogService.info( "Full hook response : " + strFullResponse );
+        response.setHeader( "Content-Type", "application/json" );
+        response.getWriter().print(strFullResponse);
     }
 }
