@@ -63,9 +63,14 @@
 
     <properties>
         <componentName>chatbot-stationnement</componentName>
-        <jiraProjectName>CHATBOTSTATIONNEMENT</jiraProjectName>
-        <jiraComponentId></jiraComponentId>
+        <jiraProjectName>BOTSTATION</jiraProjectName>
+        <jiraComponentId>13787</jiraComponentId>
     </properties>
     
+    <scm>
+        <connection>scm:git:https://github.com/lutece-secteur-public/chat-module-chatbot-stationnement.git</connection>
+        <developerConnection>scm:git:https://github.com/lutece-secteur-public/chat-module-chatbot-stationnement.git</developerConnection>
+        <url>https://github.com/lutece-secteur-public/chat-module-chatbot-stationnement.git</url>
+    </scm>
     
 </project>
