@@ -34,6 +34,8 @@
 
 package fr.paris.lutece.plugins.chatbot.modules.stationnement.service.bot;
 
+import fr.paris.lutece.plugins.chatbot.business.BotPost;
+import fr.paris.lutece.plugins.chatbot.business.Post;
 import fr.paris.lutece.portal.service.util.AppPropertiesService;
 import fr.paris.lutece.plugins.chatbot.service.bot.AbstractChatBot;
 import fr.paris.lutece.plugins.chatbot.service.bot.ChatBot;
@@ -56,11 +58,10 @@ public class StationnementChatBot extends AbstractChatBot implements ChatBot
     
     
     @Override
-    public List<String> processUserMessage( String strMessage, String strConversationId, Locale locale )
+    public List<BotPost> processUserMessage( String strMessage, String strConversationId, Locale locale )
     {
-        List<String> listMessages = new ArrayList<>();
+        List<BotPost> listMessages = new ArrayList<>();
         DialogResponse response = null;
-        String strResponse = "No response";
         String strToken = AppPropertiesService.getProperty( PROPERTY_TOKEN );
         try
         {
@@ -75,7 +76,8 @@ public class StationnementChatBot extends AbstractChatBot implements ChatBot
         {
             for( Message message : response.getMessages() )
             {
-                listMessages.add( message.getContent());
+                BotPost post = new BotPost(  message.getContent() , Post.CONTENT_TYPE_TEXT );
+                listMessages.add( post );
             }
         }
         return listMessages;
