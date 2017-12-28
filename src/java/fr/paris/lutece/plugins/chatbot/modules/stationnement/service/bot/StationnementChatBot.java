@@ -76,7 +76,7 @@ public class StationnementChatBot extends AbstractChatBot implements ChatBot
         {
             for( Message message : response.getMessages() )
             {
-                BotPost post = new BotPost(  message.getContent() , Post.CONTENT_TYPE_TEXT );
+                BotPost post = new BotPost(  message.getContent() );
                 listMessages.add( post );
             }
         }
